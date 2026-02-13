@@ -1,12 +1,13 @@
-import google.generativeai as genai
+import os
+from dotenv import load_dotenv
+import google.generativeai as genai # Bu satırı eklemeyi unutma
 
-# --- BURAYA KENDİ API KEY'İNİ YAPIŞTIR ---
-API_KEY = "AIzaSyAl70BL_WJ5nSJ62QZ2fp-JPXAJk--Vr4o"
+load_dotenv()
+api_key = os.getenv("GOOGLE_API_KEY")
 
-genai.configure(api_key=API_KEY)
+genai.configure(api_key=api_key) 
 
 print("--- LİSTE ALINIYOR... ---")
-
 try:
     # Google'a soruyoruz: Elimde hangi modeller var?
     for m in genai.list_models():
